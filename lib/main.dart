@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
-
-  const MyApp({Key? key}) : super(key: key);
+  var switchValue = false; // 변수
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,12 +13,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Container(
-        color: Colors.white,
-        child: Center(
-            child: Text('안녕\n플러터',
-              textAlign: TextAlign.center,
-              style: TextStyle(color: Colors.blue, fontSize: 20),)),
+      darkTheme: ThemeData.light(),
+      home: Scaffold(
+        body: Center(
+            child: Switch(
+              value: switchValue, // 변수 값
+              onChanged: ((value) {switchValue = value;}), // 아직 이해 못함
+            )),
       ),
     );
   }
