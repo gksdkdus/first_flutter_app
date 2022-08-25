@@ -13,7 +13,9 @@ class MyApp extends StatefulWidget {
 
   class _MyApp extends State<MyApp> {
     var switchValue = false;
-    String test = '안녕';
+    String test = '안녕'; // 버튼에 들어갈 텍스트 입력
+    Color _color = Colors.orange;
+
     @override
     Widget build(BuildContext context){
     return MaterialApp(
@@ -25,16 +27,23 @@ class MyApp extends StatefulWidget {
       darkTheme: ThemeData.light(),
       home: Scaffold(
         body: Center(
-            child: Switch(
-              value: switchValue, // 변수 값
-              onChanged: (value) {
-                setState(() {
-                  print(value);
-                  switchValue = value;
-                 });
-              }),
-         ),
-       )
-    );
+            child: ElevatedButton(
+                child: Text('$test'),
+                style: ButtonStyle(backgroundColor: MaterialStateProperty.all(_color)),
+                onPressed: (){
+                  if(_color == Colors.orange){
+                    setState((){
+                      test = '플러터';
+                      _color = Colors.pink;
+                    });
+                  } else{
+                    setState((){
+                      test = '플러터';
+                      _color = Colors.orange;
+                    });
+      }
+                }),
+       ),
+      ));
   }
 }
